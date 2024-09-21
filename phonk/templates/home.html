@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title%}Trang chủ{%endblock%}
+
+{% block content%}
+<div class = 'd-flex'>
+    {% for item in product %}
+        <div>
+            {% if item.image %}
+            <img style="width: 50px; height: 100px" class="w-50" src = "{{ item.image.url }}" />
+            {% endif %}
+            <p>{{item.name}}</p>
+            <p>{{item.price}}</p>
+        </div>
+       
+</div>
+    {%endfor%}
+{%endblock%}
