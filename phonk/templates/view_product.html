@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Tên</th>
+        <th scope="col">Ảnh</th>
+        {% comment %} <th scope="col">Mô tả</th> {% endcomment %}
+        <th scope="col">Nguồn gốc</th>
+        <th scope="col">Nhãn hiệu</th>
+        <th scope="col">Giá tiền</th>
+        <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">     
+        {% for item in product %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{item.name}}</td>
+                {% if item.image %}
+                    <td><img style="width: 100px; height:100px" src={{item.image.url}} alt="Ảnh"/></td>
+                {% endif %}
+                {% comment %} <td>{{item.description}}</td> {% endcomment %}
+                <td>{{item.origin}}</td>
+                <td>{{item.trademark}}</td>
+                <td>{{item.price}}</td>
+                <td><a href={% url "edit-product" item.id %}><i class="bi bi-pen-fill"></i></a></td>
+                <td><a><i class="bi bi-trash3-fill"></i></a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

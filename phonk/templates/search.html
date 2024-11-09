@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content%}
+{% for item in rs %} 
+    <div class="card mb-3 col-lg-4">
+        
+            {% if item.image %}
+            <img class="card-img-top" height="100%" width="auto" style="background-size: cover;" src = "{{ item.image.url }}" />
+            {% endif %}
+            <a href={% url 'detail' item.id %}>{{item.name}}</a>
+            <p>{{item.price}}</p>
+    </div>
+{% endfor %}
+{% endblock %}
